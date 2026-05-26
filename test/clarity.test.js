@@ -34,7 +34,6 @@ test("extractKeywords returns repeated meaningful terms first", () => {
 
 test("detectActionItems finds explicit next steps", () => {
   assert.deepEqual(detectActionItems(NOTES), [
-    "The onboarding launch is close but the team still needs one source of truth.",
     "Action: Maya will review activation data and send a recommendation by Friday.",
   ]);
 });

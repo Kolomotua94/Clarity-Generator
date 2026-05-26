@@ -127,6 +127,7 @@ export function detectActionItems(value) {
 
   return lines
     .map((line) => line.replace(/^[-*•\d.)\s]+/, "").trim())
+    .filter((line) => !isQuestionLine(line))
     .filter((line) => actionPatterns.some((pattern) => pattern.test(line)))
     .slice(0, 6);
 }
@@ -269,6 +270,20 @@ function scoreSentence(sentence, keywords) {
   const actionScore = /\b(goal|because|decide|need|impact|customer|deadline|risk)\b/i.test(sentence) ? 3 : 0;
 
   return keywordScore + lengthScore + actionScore;
+}
+
+function isQuestionLine(line) {
+  const lower = line.toLowerCase();
+
+  return (
+    line.endsWith("?") ||
+    lower.startsWith("how ") ||
+    lower.startsWith("what ") ||
+    lower.startsWith("when ") ||
+    lower.startsWith("where ") ||
+    lower.startsWith("why ") ||
+    lower.startsWith("who ")
+  );
 }
 
 function tightenSentence(sentence) {
