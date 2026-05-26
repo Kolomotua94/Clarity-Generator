@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = path.join(root, "src");
 const port = Number(process.env.PORT ?? 4173);
+const host = process.env.HOST ?? "0.0.0.0";
 
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
@@ -45,6 +46,7 @@ const server = createServer(async (request, response) => {
   }
 });
 
-server.listen(port, () => {
-  console.log(`Clarity Generator running at http://localhost:${port}`);
+server.listen(port, host, () => {
+  console.log(`Clarity Generator running at http://${host}:${port}`);
+  console.log(`Open the forwarded preview for port ${port} in Cursor.`);
 });
