@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Clarity Generator turns rough notes into a concise brief with summary bullets, action items, and questions."
+    >
+    <title>Clarity Generator</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="./index.html">Clarity Generator</a>
+        <a href="#generator">Generate</a>
+      </nav>
+
+      <section class="hero-grid">
+        <div>
+          <p class="eyebrow">Sharper thinking, faster sharing</p>
+          <h1>Turn rough notes into a clear brief.</h1>
+          <p class="hero-copy">
+            Paste messy thoughts, meeting notes, or a draft update. Clarity Generator
+            extracts the signal, highlights next steps, and points out what still needs
+            to be resolved.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#generator">Start generating</a>
+            <button class="button button-secondary" id="load-sample" type="button">Load sample</button>
+          </div>
+        </div>
+
+        <aside class="insight-card" aria-label="What the app creates">
+          <span class="score-label">Output includes</span>
+          <ul>
+            <li>Concise headline</li>
+            <li>Audience-aware summary</li>
+            <li>Action items and open questions</li>
+            <li>Practical clarity score</li>
+          </ul>
+        </aside>
+      </section>
+    </header>
+
+    <main id="generator" class="workspace">
+      <section class="panel input-panel" aria-labelledby="input-heading">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Input</p>
+            <h2 id="input-heading">Your notes</h2>
+          </div>
+          <span id="word-count" class="word-count">0 words</span>
+        </div>
+
+        <form id="clarity-form">
+          <label for="notes">Paste a draft, meeting notes, or scattered thoughts</label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="14"
+            placeholder="Example: We need to launch the onboarding update, but support still needs docs..."
+          ></textarea>
+
+          <div class="controls">
+            <label>
+              Audience
+              <select id="audience" name="audience">
+                <option value="general">General</option>
+                <option value="executive">Executive</option>
+                <option value="technical">Technical</option>
+                <option value="customer">Customer</option>
+              </select>
+            </label>
+
+            <label>
+              Tone
+              <select id="tone" name="tone">
+                <option value="plain">Plain</option>
+                <option value="confident">Confident</option>
+                <option value="friendly">Friendly</option>
+                <option value="urgent">Urgent</option>
+              </select>
+            </label>
+
+            <label>
+              Format
+              <select id="format" name="format">
+                <option value="brief">Brief</option>
+                <option value="update">Status update</option>
+                <option value="plan">Plan</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="checkbox">
+            <input id="include-actions" type="checkbox" checked>
+            Include detected action items
+          </label>
+
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Generate clarity</button>
+            <button class="button button-secondary" id="reset-form" type="button">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel output-panel" aria-labelledby="output-heading">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Output</p>
+            <h2 id="output-heading">Clear brief</h2>
+          </div>
+          <div class="score-pill" aria-label="Clarity score">
+            <span id="score-value">--</span>
+            <small>/ 100</small>
+          </div>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <p>Your generated brief will appear here.</p>
+          <p>Use it as a starting point for updates, decisions, and follow-ups.</p>
+        </div>
+
+        <article id="result-panel" class="result-panel" hidden>
+          <div id="result-content"></div>
+          <button class="button button-secondary" id="copy-result" type="button">Copy as Markdown</button>
+        </article>
+
+        <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

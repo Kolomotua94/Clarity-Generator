@@ -1,0 +1,19 @@
+{
+  "name": "clarity-generator",
+  "version": "1.0.0",
+  "description": "A small web app that turns rough notes into clear briefs, action items, and follow-up questions.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "lint": "node --check src/clarity.js && node --check src/app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs",
+    "test": "node --test"
+  },
+  "keywords": [
+    "clarity",
+    "notes",
+    "productivity"
+  ],
+  "author": "",
+  "license": "MIT"
+}
